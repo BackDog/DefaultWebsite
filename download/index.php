@@ -7,34 +7,49 @@
 </head>
 <body>
 
-<!-- <div class="header">
-  <h2>Scroll Down</h2>
-  <p>Scroll down to see the sticky effect.</p>
-</div> -->
-
 <div class="sidenav box-effect">
-  <div class="side-menu">
-  HOME
+  <div class="side-menu">ANTIVIRUS
+    <div class="active"></div>
   </div>
-  <div class="side-menu">
-    TYPE
+  <div class="side-menu">GAME
+    <div class="active"></div>
   </div>
-  <div class="side-menu">
-    CONTACT
+  <div class="side-menu">BROWSER
+    <div class="active"></div>
   </div>
-  <div class="side-menu">
-    CONTACT
+  <div class="side-menu">DESIGN
+    <div class="active"></div>
   </div>
+  <div class="side-menu">DRIVER
+    <div class="active"></div>
+  </div>
+  <div class="side-menu">DEVELOP
+    <div class="active"></div>
+  </div>
+  <div class="side-menu">FILE
+    <div class="active"></div>
+  </div>
+
 </div>
 
 <div class="navbar-sticky">
+
   <div class="flex-container" style="height: 40px">
-    <div style="width: 250px; font-size: 24px; font-weight: 500; text-align: center;padding-top: 5px">DOWNLOAD</div>
-    <div class="navtop-item">HOME</div>
-    <div class="navtop-item">SERVICES</div>
-    <div class="navtop-item">CONTACT</div>
-    <div class="navtop-item">AB0RT</div>
+    <div class="title">DOWNLOAD</div>
+    <div class="navtop-item">HOME
+      <div class="active"></div>
+    </div>
+    <div class="navtop-item">SERVICES
+      <div class="active"></div>
+    </div>
+    <div class="navtop-item">CONTACT
+      <div class="active"></div>
+    </div>
+    <div class="navtop-item">ABORT
+      <div class="active"></div>
+    </div>
   </div>
+
   <div class="flex-container box-effect" style="height: 40px;background-color: rgba(0,0,0,0.1);">
     <div style="width: 250px;text-align: center; padding-top: 10px;">Search software</div>
     <div class="search-container" style="padding-top: 10px;">
@@ -43,85 +58,76 @@
         <button type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>
+    <div style="height: 40px; width: calc(100% - 460px);flex-flow: row;">
+      <div></div>
+    </div>
   </div>
 
 </div>
 
 
-<div class="content box-effect">
-  <h2>Responsive Sidenav Example</h2>
-  <p>This example use media queries to transform the sidenav to a top navigation bar when the screen size is 900px or less.</p>
-  <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
-  <p>You will learn more about media queries and responsive web design later in our CSS Tutorial.</p>
-  <h3>Resize the browser window to see the effect.</h3>
-</div>
-<style type="text/css">
-  body {
-    margin: 0;
-    font-family: "Century Gothic",メイリオ,Meiryo,ヒラギノ角ゴ\20Pro\20W3,"Hiragino Kaku Gothic Pro",ＭＳ\20Ｐゴシック,Arial,Verdana,sans-serif !important;
-  }
-/*  div{
-    -webkit-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-    -moz-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-  }*/
-  .box-effect{
-    -webkit-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-    -moz-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-  }
-  .navbar-sticky{
-    height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: whitesmoke;
-  }
-  .flex-container {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-  .sidenav{
-    width: 250px;
-    position: fixed;
-    top: 80px;
-    left: 0;
-    height: 100%;
-  }
-  .side-menu{
-    width: 100%;
-    height: 25px;
-    padding-top: 15px;
-    font-size: 13px;
-    text-align: center;
-    font-weight: 700;
-    transition: 0.5s;
-  }
-  .side-menu:hover{
-    background-color: rgba(0,0,0,0.1);
-    cursor: pointer;
-  }
-  .navtop-item{
-    font-size: 13px;
-    padding-top: 10px;
-    width: 100px;
-    text-align: center;
-    font-weight: 700;
-    transition: 0.5s;
+<div class="container">
+  <div>
 
-  }
-  .navtop-item:hover{
-    background-color: rgba(0,0,0,0.1);
-    cursor: pointer;
-  }
-  .content{
-    padding-top: 80px;
-    background-color: gray;
-    max-width: 1000px;
-    margin: auto;
-    height: 1000px;
-  }
-</style>
+    <div class="box-effect download-item">
+      <div class="flex-container d-info">
+        <div class="d-icon"></div>
+        <div class="d-info-2">
+          <span class="d-name">Chicken Invaders</span>
+          <span class="d-version"></span>
+          <a class="d-download" href="download.php?id=51190974724241">DOWNLOAD</a>
+        </div>
+      </div>
+      <div>
+        <p class="d-des">Chicken Invaders is a series of shoot 'em up video games, developed by InterAction studios and released for Microsoft Windows, OS X, Linux, iOS, Windows Phone, and Android platforms. There are six games in the series.  The main theme of the game is a battle between a lone combat spacecraft and a technologically advanced race of space-faring chickens, who are intent on subjugating (and later destroying) Earth. The games make heavy use of humor, especially in the form of parodies of Galaxian, Star Wars, Space Invaders and Star Trek.</p>
+      </div>
+    </div>
+
+    <div class="box-effect download-item">
+      <div class="flex-container d-info">
+        <div class="d-icon"></div>
+        <div class="d-info-2">
+          <span class="d-name">Cheat Engine (CE)</span>
+          <span class="d-version"></span>
+          <a class="d-download" href="download.php?id=51190974724314">DOWNLOAD</a>
+        </div>
+      </div>
+      <div>
+        <p class="d-des">Cheat Engine (CE) is a free and open-source memory scanner/debugger created by Eric Heijnen ("Dark Byte") for the Windows operating system.[3] Cheat Engine is mostly used for cheating in computer games[4] and is sometimes modified and recompiled to evade detection. The program resembles L. Spiro's Memory Hacking Software, TSearch, and ArtMoney.[needs context] It searches for values input by the user with a wide variety of options that allow the user to find and sort through the computer's memory. Cheat Engi</p>
+      </div>
+    </div>
+
+
+    <div class="box-effect download-item">
+      <div class="flex-container d-info">
+        <div class="d-icon"></div>
+        <div class="d-info-2">
+          <span class="d-name">Age of Empires</span>
+          <span class="d-version"></span>
+          <a class="d-download" href="download.php?id=51190974714180">DOWNLOAD</a>
+        </div>
+      </div>
+      <div>
+        <p class="d-des">Age of Empires is a series of historical real-time strategy video games, originally developed by Ensemble Studios and published by Xbox Game Studios. The first game of the series was Age of Empires, released in 1997. Seven other games and three spin-offs have been released.</p>
+      </div>
+    </div>
+
+
+    <div class="box-effect download-item">
+      <div class="flex-container d-info">
+        <div class="d-icon"></div>
+        <div class="d-info-2">
+          <span class="d-name">CodeIgniter</span>
+          <span class="d-version"></span>
+          <a class="d-download" href="download.php?id=51190974724338"">DOWNLOAD</a>
+        </div>
+      </div>
+      <div>
+        <p class="d-des">CodeIgniter is an open-source software rapid development web framework, for use in building dynamic web sites with PHP.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
