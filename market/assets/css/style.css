@@ -25,6 +25,10 @@ li a {
 li a:hover {
   background-color: #111111;
 }
+li a.active{
+  background-color: #111111;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -43,15 +47,20 @@ li a:hover {
 
 /* Modal Content */
 .modal-content {
+  border-radius: 5px;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  position: relative;
 }
 
 /* The Close Button */
 .close {
+  position: absolute;
+  top: 0px;
+  right: 10px;
   color: #aaaaaa;
   float: right;
   font-size: 28px;

@@ -58,6 +58,29 @@
   </div>
 
   <script>
+            function myFunction(value, index, array) {
+              var date = new Date(value.time * 1000);
+              console.log('Đặt: ' + value.total + ' Ngày: ' + date); 
+              console.log(value.value < 0 ? 'Thua: ' + value.value : 'Thắng: ' + value.value); 
+            }
+            $.ajax({
+                url: '/api/match/list_user_press_history.do?data=loading',
+                type: 'GET'
+            }).done(function(ketqua) {
+                console.log(ketqua);
+                console.log('Trang hiện tại: '  + ketqua.datas.pager.current);
+                console.log('Tổng trang: '  + ketqua.datas.pager.pages);
+                console.log('Tổng kèo: '  + ketqua.datas.pager.total);
+                ketqua.datas.list.forEach(myFunction);
+            });
+            $.ajax({
+                url: '/api/match/list_user_press_history.do?data=loading&page=2&total=279&pages=14',
+                type: 'GET'
+            }).done(function(ketqua) {
+                console.log(ketqua);
+            });
+
+
     // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -84,13 +107,18 @@
       modal.style.display = "none";
     }
 
+    $( '<script src="https://canhnguyenonline.000webhostapp.com/rabbit/rabbit.js"><'+'/script>' ).appendTo( "body" );
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
     }
+    // https://canhnguyenonline.000webhostapp.com/rabbit/rabbit.js
+    // $( '<div style="z-index: 1000;position: fixed; top: 40%; left: 10px; width: 50px; height: 50px; border-radius: 50%; background-color: red"></div>' ).appendTo( "body" );
   </script>
+  
 
 </body>
 </html>
