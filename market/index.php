@@ -10,18 +10,18 @@
 		body {
 			font-family: "Century Gothic",メイリオ,Meiryo,ヒラギノ角ゴ\20Pro\20W3,"Hiragino Kaku Gothic Pro",ＭＳ\20Ｐゴシック,Arial,Verdana,sans-serif !important;
 			background-color: #222d32;
-			background: url('https://static1.5etop.com/static/pub/front/theme/etop/images/body-bg.jpg');
+			background: url('./assets/images/body-bg.jpg');
 			color: #001;
 		}
 	</style>
 </head>
 <body>
-	<div style="width: 100%; height: 80px; background-color: #520e0e;">
+	<div style="width: 100%; height: 80px; background: url('./assets/images/header-2.png');">
 		<div style="background-image: url('./assets/images/logo.jfif');background-size: contain; height: 80px; width: 80px; float: left;">
 		</div>
 		<div style="float: left;">
 			<span style="color: white; font-size: 24px; font-weight: 500; padding: 32px 0 0 32px;">Market 5ETOP</span>
-			<p style="padding: 0 0 0 32px;color: white; font-size: 12px;">This site support for trading item Dota 2</p>
+			<p style="padding: 0 0 0 32px;color: white; font-size: 12px;">Support for trading item Dota 2</p>
 		</div>
 	</div>
 

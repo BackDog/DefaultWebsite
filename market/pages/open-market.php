@@ -1,12 +1,6 @@
 <div class="about-section">
-  <h3>About Us Page</h3>
-  <p>Just a normal coder make a trade website for 5ETOP player.</p>
+  <h3>Not Support Yet</h3>
+  <p>The market is open for 5ETOP players to exchange items for sale at a self-adjusting price.</p>
 </div>
 <style type="text/css">
-	.about-section {
-	  padding: 50px;
-	  text-align: center;
-	  background-color: #474e5d;
-	  color: white;
-	}	
 </style>

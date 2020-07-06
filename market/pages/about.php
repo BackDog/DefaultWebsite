@@ -1,12 +1,8 @@
 <div class="about-section">
-  <h3>About Us Page</h3>
-  <p>Just a normal coder make a trade website for 5ETOP player.</p>
+  <h3>About Page</h3>
+ 	<p>This is not the official page of 5ETOP.</p>
+	<p>This is a sub-site of SERVEGAME.</p>
 </div>
 <style type="text/css">
-	.about-section {
-	  padding: 50px;
-	  text-align: center;
-	  background-color: #474e5d;
-	  color: white;
-	}	
+
 </style>

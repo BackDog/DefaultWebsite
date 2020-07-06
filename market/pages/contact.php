@@ -27,21 +27,23 @@ input[type=submit]:hover {
 }
 
 .container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 24px;
+  background-color: #888888;
+  color: black;
 }
 </style>
 
-<h3>Contact Form</h3>
+<h3 style="color: white">Contact Form</h3>
 
 <div class="container">
   <form action="/action_page.php">
     <label for="fname">Title</label>
     <input type="text" id="fname" name="firstname" placeholder="Title..">
 
-    <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <label for="subject">Issue</label>
+    <textarea id="subject" name="subject" placeholder="Write Issue.." style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
   </form>

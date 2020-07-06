@@ -83,3 +83,11 @@ th, td {
   padding: 5px;
   text-align: left;    
 }
+.about-section {
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  background-color: #888888;
+  color: black;
+} 
