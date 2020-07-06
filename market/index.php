@@ -27,6 +27,9 @@
 
 	<div style="position: absolute; top: 0; right: 5px; height: 20px; width: 80px; text-align: end; color: white; font-size: 11px;">
 		Version: 1.0.0
+		<div style="background-color: black">
+			
+		</div>
 	</div>
 
 	<div id="navigation-horizontal">
@@ -73,19 +76,14 @@
 		function removeClassMenu(){
 			$('.menu-item').removeClass('active');
 		}
-		async function changePage(page){
-			var dataPage = await getData('./pages/' + page + '.php');
-			console.log(dataPage);
-			removeClassMenu();
-			$("#menu-item-"+page).addClass("active");
-			$("#content").html(dataPage);
-		}
-		async function getData(url) {
+		async function callServer(url, method, data) {
 		    return new Promise((resolve, reject) => {
 		        $.ajax({
 		            url: url,
-		            type: 'GET',
+		            type: method,
 		            timeout: 30000,
+		            contentType: method === 'GET' ? 'text' : 'application/json',
+		            data: JSON.stringify(data),
 		            success: (response) => {
 		                resolve(response);
 		            },
@@ -94,6 +92,12 @@
 		            }
 		        })
 		    })
+		}
+		async function changePage(page){
+			var dataPage = await callServer('./pages/' + page + '.php', 'GET', {});
+			removeClassMenu();
+			$("#menu-item-"+page).addClass("active");
+			$("#content").html(dataPage);
 		}
 		renderNavigationHorizontal();
 		changePage(currentPage);
@@ -114,6 +118,17 @@
 	    	}
 	    }
 		//MODAL
+		//ACCOUNT
+		async function login(){
+			var data = {
+				username: "admin",
+				password: "1234562"
+			};
+			var result = await callServer('./database/api/api.php?type=User&action=login', 'POST', data);
+			console.log(result);
+		}
+		login();
+		//ACCOUNT
 	</script>
 </body>
 </html>

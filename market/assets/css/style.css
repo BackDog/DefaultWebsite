@@ -11,6 +11,7 @@ ul {
 }
 
 li {
+  cursor: pointer;
   float: left;
 }
 
@@ -72,4 +73,13 @@ li a.active{
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
 }
