@@ -1,12 +1,14 @@
-<table id="table-user" style="width:100%; background-color: white">
-  <tr>
-  	<th>ID</th>
-    <th>Username</th>
-    <th>Password</th> 
-    <th>Email</th>
-    <th>Action</th>
-  </tr>
-</table>
+<div class="about-section">
+	<table id="table-user" style="width:100%; background-color: white">
+	  <tr>
+	  	<th>ID</th>
+	    <th>Username</th>
+	    <th>Password</th> 
+	    <th>Email</th>
+	    <th>Action</th>
+	  </tr>
+	</table>
+</div>
 <script>
 	load();
 	async function load(){
