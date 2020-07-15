@@ -28,14 +28,15 @@
 	<div style="position: absolute; top: 0; right: 5px; height: 20px; width: 80px; text-align: end; color: white; font-size: 11px;">
 		Version: 1.0.0
 	</div>
-	<div style="position: absolute; top: 40px; border-top-left-radius: 20px; right: 0; height: 36px; width: 200px; text-align: end; color: white; font-size: 11px; background: url('./assets/images/body-bg.jpg'); border: 2px solid rgba(0,0,0,0.2);">
+	<?php include('components/authentication.php'); ?>
+<!-- 	<div style="position: absolute; top: 40px; border-top-left-radius: 20px; right: 0; height: 36px; width: 200px; text-align: end; color: white; font-size: 11px; background: url('./assets/images/body-bg.jpg'); border: 2px solid rgba(0,0,0,0.2);">
 		<div class="dropdown">
 		  <span style="color: white; font-size: 16px; text-shadow: 2px 2px 4px #000000; padding-right: 16px; margin-top: 12px;">Login</span>
 		  <div class="dropdown-content">
 		    <p>Hello World!</p>
 		  </div>
 		</div>
-	</div>
+	</div> -->
 
 	<div id="navigation-horizontal">
 	</div>
