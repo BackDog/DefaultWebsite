@@ -5,6 +5,8 @@ process.title = 'node-chat';
 var webSocketsServerPort = 1337;
 // websocket and http servers
 var webSocketServer = require('websocket').server;
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 var http = require('http');
 /**
  * Global variables
@@ -90,11 +92,13 @@ wsServer.on('request', function(request) {
         };
         history.push(obj);
         history = history.slice(-100);
+        
         // login();
         // broadcast message to all connected clients
         var json = JSON.stringify({ type:'message', data: obj });
         for (var i=0; i < clients.length; i++) {
-          clients[i].sendUTF(json);
+          test(clients[i], clientSend);
+          // clients[i].sendUTF(json);
         }
       }
     }
@@ -110,6 +114,24 @@ wsServer.on('request', function(request) {
       colors.push(userColor);
     }
   });
+
+  function clientSend(client, message){
+    client.sendUTF(message);
+  }
+
+  function test(client, callback){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://market.servegame.local/database/api/api.php?type=User";
+
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        callback(client, this.responseText);
+      }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  }
 
   // async function login(){
   //   var data = {

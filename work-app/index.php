@@ -70,6 +70,7 @@
 
   function writeToScreen(message)
   {
+  	console.log((new Date()).getTime());
     var pre = document.createElement("p");
     pre.style.wordWrap = "break-word";
     pre.innerHTML = message;
@@ -83,6 +84,7 @@
   	var message = x.value;
   	x.value = '';
   	console.log(message);
+  	console.log((new Date()).getTime());
   	websocket.send(message);
   }
 
