@@ -28,4 +28,24 @@
 	async function update(){
 
 	}
+	var products = {
+		type: "name",
+		data: [
+			{
+				id: "1",
+				name: 'name',
+				price: '1000',
+				tag: ['3','32','22'],
+				content: 'ffff'
+			}
+		]
+	};
+
+	var cards = [];
+	function addToCard(product){
+		cards.push(product);
+	}
+	function sumaryPrice(){
+		
+	}
 </script>
