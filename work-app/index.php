@@ -1,100 +1,26 @@
 <!DOCTYPE html>
-  <meta charset="utf-8" />
-  <title>WebSocket Test</title>
-  <script language="javascript" type="text/javascript">
+<html>
+<head>
+	<title>Websocket Test</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<script src="js/client.js"></script>
+	<style type="text/css">
+		body {
+			font-family: "Century Gothic",メイリオ,Meiryo,ヒラギノ角ゴ\20Pro\20W3,"Hiragino Kaku Gothic Pro",ＭＳ\20Ｐゴシック,Arial,Verdana,sans-serif !important;
+		}
+	</style>
+</head>
+<body>
 
-  var wsUri = "ws://127.0.0.1:1337";
-  var output;
-  var person = '22';
+	<h2>WebSocket Test</h2>
 
-  function init()
-  {
-    output = document.getElementById("output");
-	person = prompt("Please enter your name:", "Harry Potter");
-    testWebSocket();
+	<div id="your_div" style="height: 400px; width: 300px; overflow-y: scroll;">
+		<div id="output"></div>
+	</div>
+	<input id="input" type="text" name="message">
+	<button id="myBtn" onclick="sendMessage()">SEND</button>
 
-    var inputChat = document.getElementById("input");
-	console.log(inputChat);
-	inputChat.addEventListener("keyup", function(event) {
-	  if (event.keyCode === 13) {
-	   event.preventDefault();
-	   document.getElementById("myBtn").click();
-	  }
-	});
-  }
+	<div style="border-radius: 50%; height: 60px; width: 60px; background-color: green; position: fixed; bottom: 0; right: 0;"></div>
 
-  function testWebSocket()
-  {
-    websocket = new WebSocket(wsUri);
-    websocket.onopen = function(evt) { 
-    	onOpen(evt) 
-    };
-    websocket.onclose = function(evt) { 
-    	onClose(evt) 
-    };
-    websocket.onmessage = function(evt) { 
-    	onMessage(evt) 
-    };
-    websocket.onerror = function(evt) { 
-    	onError(evt) 
-    };
-  }
-
-  function onOpen(evt)
-  {
-    writeToScreen("CONNECTED");
-    doSend(person);
-  }
-
-  function onClose(evt)
-  {
-    writeToScreen("DISCONNECTED");
-  }
-
-  function onMessage(evt)
-  {
-    writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
-    // websocket.close();
-  }
-
-  function onError(evt)
-  {
-    writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
-  }
-
-  function doSend(message)
-  {
-    writeToScreen("SENT: " + message);
-    websocket.send(message);
-  }
-
-  function writeToScreen(message)
-  {
-  	console.log((new Date()).getTime());
-    var pre = document.createElement("p");
-    pre.style.wordWrap = "break-word";
-    pre.innerHTML = message;
-    output.appendChild(pre);
-
-    var objDiv = document.getElementById("your_div");
-	objDiv.scrollTop = objDiv.scrollHeight;
-  }
-  function sendMessage(){
-  	var x = document.getElementById("input");
-  	var message = x.value;
-  	x.value = '';
-  	console.log(message);
-  	console.log((new Date()).getTime());
-  	websocket.send(message);
-  }
-
-  window.addEventListener("load", init, false);
-
-  </script>
-  <h2>WebSocket Test</h2>
-
-  <div id="your_div" style="height: 400px; width: 300px; overflow-y: scroll;">
-  	  <div id="output"></div>
-  </div>
-    <input id="input" type="text" name="message">
-  <button id="myBtn" onclick="sendMessage()">SEND</button>
+</body>
+</html>
