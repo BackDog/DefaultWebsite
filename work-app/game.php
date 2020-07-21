@@ -4,6 +4,7 @@
 	<title>Market 5ETOP</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/client.js"></script>
 	<style type="text/css">
 		body {
 			font-family: "Century Gothic",メイリオ,Meiryo,ヒラギノ角ゴ\20Pro\20W3,"Hiragino Kaku Gothic Pro",ＭＳ\20Ｐゴシック,Arial,Verdana,sans-serif !important;
@@ -16,6 +17,12 @@
 	<div id="main-content" class="main-content" tabindex="0">
 		<div id="wall" class="wall"></div>
 	</div>
+		<div id="your_div" style="height: 0px; width: 300px; overflow-y: scroll;">
+		<div id="output"></div>
+	</div>
+	<input id="input" type="text" name="message">
+	<button id="myBtn" onclick="sendMessage()">SEND</button>
+
 	<script type="text/javascript">
 		 $('#main-content').on('keydown', function(event) {
 		    // console.log(event.keyCode);
@@ -50,6 +57,8 @@
 			status: 0,
 			positionX: 100,
 			positionY: 100,
+			gravity: 0.5,
+			draft: 2,
 			speedX: 0,
 			speedY: 0,
 			face: 1
@@ -75,21 +84,10 @@
 
 		var face = 1;
 		function myTimer() {
-			if(status == 1){
-				player.speedX = 20;
-				player.face = 1;
-				status = 0;
-			}else if (status == 2){
-				player.speedX = 20;
-				player.face = 2;
-				status = 0;
-			}else if (status == 4){
-				player.speedY = -20;
-				status = 0;
+			if(player.speedY < 0.5){
+				player.speedX -= player.draft;
 			}
-
-			player.speedX -= draft;
-			player.speedY += gravity;
+			player.speedY += player.gravity;
 
 			if (player.speedX < 1){
 				player.speedX = 0;
@@ -105,6 +103,11 @@
 			}else{
 				player.positionY += player.speedY;
 			}
+
+			if(status != 0 && player.speedX == 0 && player.speedY == 0){
+				idle();
+			}
+
 			$('#wall').css('left', player.positionX);
 			$('#wall').css('top', player.positionY);
 
@@ -132,7 +135,6 @@
 				}else{
 					skills[i].positionY += skills[i].speedY;
 				}
-
 			}
 		}
 
@@ -142,22 +144,32 @@
 		}
 		function left(){
 			status = 1;
+			player.speedX = 20;
+			player.face = 1;
+			websocket.send('left');
 			console.log('Move Left');
 		}
 		function right(){
 			status = 2;
+			player.speedX = 20;
+			player.face = 2;
+			websocket.send('right');
 			console.log('Move Right');
 		}
 		function down(){
 			status = 3;
+			websocket.send('down');
 			console.log('Down');
 		}
 		function jump(){
 			status = 4;
+			player.speedY = -10;
+			websocket.send('jump');
 			console.log('Jump');
 		}
 		function attack(){
 			status = 5;
+			websocket.send('attack');
 			addSkill();
 			console.log('Attack');
 		}

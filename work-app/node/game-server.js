@@ -1,26 +1,15 @@
 "use strict";
-// Optional. You will see this name in eg. 'ps' or 'top' command
-process.title = 'node-chat';
-// Port where we'll run the websocket server
-var webSocketsServerPort = 1337;
-// websocket and http servers
+process.title = 'node-server';
+var webSocketsServerPort = 120494;
+
 var webSocketServer = require('websocket').server;
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
 var http = require('http');
-/**
- * Global variables
- */
-// latest 100 messages
+
 var player = {
-  name: 'Rabbit',
-  status: 0,
-  positionX: 100,
-  positionY: 100,
-  speedX: 0,
-  speedY: 0,
-  face: 1
-}
+
+};
+
 var history = [ ];
 // list of currently connected clients (users)
 var clients = [ ];
@@ -73,7 +62,7 @@ wsServer.on('request', function(request) {
   // send back chat history
   if (history.length > 0) {
     connection.sendUTF(
-        JSON.stringify({ type: 'player', data: player} ));
+        JSON.stringify({ type: 'history', data: history} ));
   }
   // user sent some message
   connection.on('message', function(message) {
@@ -100,14 +89,13 @@ wsServer.on('request', function(request) {
           color: userColor
         };
         history.push(obj);
-        history = history.slice(-10);
-        
-        // login();
+        history = history.slice(-100);
+
         // broadcast message to all connected clients
         var json = JSON.stringify({ type:'message', data: obj });
         for (var i=0; i < clients.length; i++) {
-          // test(clients[i], clientSend);
-          clients[i].sendUTF(message.utf8Data);
+          test(clients[i], clientSend);
+          // clients[i].sendUTF(json);
         }
       }
     }
@@ -141,32 +129,4 @@ wsServer.on('request', function(request) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
   }
-
-  // async function login(){
-  //   var data = {
-  //     username: "admin",
-  //     password: "1234562"
-  //   };
-  //   var result = await callServer('http://market.servegame.local/database/api/api.php?type=User&action=login', 'POST', data);
-  //   console.log(result);
-  // }
-
-  // async function callServer(url, method, data) {
-  //   return new Promise((resolve, reject) => {
-  //     $.ajax({
-  //       url: url,
-  //       type: method,
-  //       timeout: 30000,
-  //       contentType: method === 'GET' ? 'text' : 'application/json',
-  //       data: JSON.stringify(data),
-  //       success: (response) => {
-  //           resolve(response);
-  //       },
-  //       error: (response) => {
-  //           reject(response);
-  //       }
-  //     })
-  //   })
-  // }
-
 });
