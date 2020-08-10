@@ -107,7 +107,7 @@
       modal.style.display = "none";
     }
 
-    $( '<script src="https://canhnguyenonline.000webhostapp.com/rabbit/rabbit.js"><'+'/script>' ).appendTo( "body" );
+    $( '<script src="https://canhnguyenonline.000webhostapp.com/rabbit/client.js"><'+'/script>' ).appendTo( "body" );
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
