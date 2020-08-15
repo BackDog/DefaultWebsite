@@ -1,5 +1,5 @@
 
-var wsUri = "wss://www.5etop.com/coinflip/wserver?sid=K%2BpD6qOMam3VgY3M7HghAqjmzQkBVHQ98wUGBnDl9W4%3D&steamId=76561199005608723&lan=en";
+var wsUri = "wss://www.5etop.com/coinflip/wserver?sid=wv3QUlDeje6fzCWmE11j9D%2FNUnB9Og7PmRuBPkr0t4o%3D&steamId=76561198131156800&lan=en";
 var output;
 var person = '22';
 var face1 = 0;
@@ -69,6 +69,7 @@ async function receiveMessageWS(message){
 			face2++;
 			sResult += 'c';
 		}
+		setGame--;
 		// await createGame();
 		//getPlay(message);		
 	}else if (message.type === 4){
@@ -146,6 +147,7 @@ async function createGame(){
 		}
 	}
 }
+var setGame = 0;
 async function getPlay(message){
 	if (sResult.length > 20){
 		sResult = sResult.substr(sResult.length - 20);
@@ -159,11 +161,15 @@ async function getPlay(message){
 			t++;
 		}
 	}
-	if ((Math.abs(c - t) >  5) && (sResult.length >= 20)){ 
-		if (message.list[0].minjoinneed < 20){
+	if ((Math.abs(c - t) >  5) && (sResult.length >= 20)){
+		setGame = 3;
+	}
+	if (setGame > 0){
+		if (message.list[0].minjoinneed < 10){
 			if (c > t){
 				if (message.list[0].face1 === 1 ){
 					var listItem = getListItemPlay(message.list[0].minjoinneed, message.list[0].maxjoinneed);
+					setGame--;
 					var result = await join(message.list[0].id, listItem);
 					console.log(result);
 					played++;
@@ -177,6 +183,7 @@ async function getPlay(message){
 				if (message.list[0].face1 === 0 ){
 					var listItem = getListItemPlay(message.list[0].minjoinneed, message.list[0].maxjoinneed);
 					var result = await join(message.list[0].id, listItem);
+					setGame--;
 					console.log(result);
 					played++;
 					// if (message.list[0].winface === 1){
@@ -256,12 +263,19 @@ async function join(id, list){
 function getListItemPlay(min, max) {
 	var items = [];
 	for(var i = 0; i < myItems.length; i++){
+		if (items.length === 10){
+			return items;
+		}
+		if (min<0) {
+			return items;
+		}
 		if (myItems[i].value < max){
 			min -= myItems[i].value;
 			max -= myItems[i].value;
 			items.push('ids=' + myItems[i].id + '&');
 		}	
 	}
+	console.log(min, max, items);
 	return items;
 }
 

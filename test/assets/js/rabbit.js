@@ -201,4 +201,53 @@ async function getDataGift(index, type) {
         })
     })
 }
-analyticProfit();
+async function getDataGame(game, page) {
+	var url = "api/match/list.do?rel=big_match&mode=waterfall&status=end&game=" + game + "&data=processed&page=" + page;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            timeout: 30000,
+            success: (response) => {
+                resolve(response);
+            },
+            error: (response) => {
+                reject(response);
+            }
+        })
+    })
+}
+
+var totalMatch = 0;
+var keoTrenWin = 0;
+function forEachMatch(value, index, array) {
+	if (value.end) {
+		totalMatch ++;
+		if (value.offerMatch.vs1.odds < value.offerMatch.vs2.odds){
+			if (value.offerMatch.vs1.score > value.offerMatch.vs2.score){
+				keoTrenWin++;
+			}
+		}else{
+			if (value.offerMatch.vs2.score > value.offerMatch.vs1.score){
+				keoTrenWin++;
+			}
+		}		
+	}
+}
+async function analyticGame(){
+	
+	var game = 'lol';
+	var current = 1;
+	var page = 10;
+	
+	var ketqua = await getDataGame(game, current);
+	do{
+		ketqua = await getDataGame(game, current);
+		ketqua.datas.list.forEach(forEachMatch);
+		current ++;
+	}while(current < page)
+
+	console.log(keoTrenWin/totalMatch);
+}
+analyticGame();
+//analyticProfit();
